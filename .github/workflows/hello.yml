@@ -14,4 +14,4 @@ jobs:
         run: echo "Hello Users"
 
       - name: Say Bye to current User"
-        run: echo "Bye ${user}"
+        run: echo "Bye ${{ github.actor }}"
