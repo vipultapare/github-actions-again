@@ -1,0 +1,25 @@
+name: general workflow
+
+on:
+ workflow_dispatch:
+
+jobs:
+ code:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout the Code
+     run: echo "Code is Pulled"
+
+ test:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Test the Code
+     run: echo "Code is Tested"
+
+ deploy:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Deploy the Code
+     run: echo "Code is Deployed"
+
+  
