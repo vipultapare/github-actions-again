@@ -1,0 +1,45 @@
+name: Input Introduction
+
+on:
+ workflow_dispatch:
+   inputs:
+     environment:
+       description: This is the environement where workflow runs
+       default: 'dev'
+       required: true
+       type: choice
+       options:
+         - dev
+         - prod
+         - stagging
+
+jobs:
+   checkout:
+     runs-on: ubuntu-latest
+     steps:
+       - name: Checkout the code
+         run: echo 'Checkout the code'
+
+   build:
+     needs: checkout
+     runs-on: ubuntu-latest
+     steps:
+       - name: Build the code
+         run: echo 'Code is building'
+
+   test:
+     needs: build
+     runs-on: ubuntu-latest
+     steps:
+      - name: Build the code
+        run: echo 'Building the code'
+
+   deploy:
+     if: inputs.environment == 'dev'
+     needs: test
+     runs-on: ubuntu-latest
+     steps:
+       - name: Deploying the code
+         run: echo "Deploying the code"
+     
+     
