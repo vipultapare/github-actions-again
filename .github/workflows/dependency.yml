@@ -11,12 +11,14 @@ jobs:
       run: echo "Code is Pulled"
 
  test:
+  needs: code
   runs-on: ubuntu-latest
   steps:
     - name: Test the Code
       run: echo "Code is Tested"
 
  deploy:
+  needs: test
   runs-on: ubuntu-latest
   steps:
     - name: Deploy the Code
