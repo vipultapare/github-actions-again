@@ -1,0 +1,15 @@
+name: Path Introduction 
+
+on:
+ push:
+  branches: [main]
+  paths:
+    - '**.html'
+
+
+jobs:
+ greet:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Greet for the path introduction
+       run: echo "sucessfully submitted this file"
