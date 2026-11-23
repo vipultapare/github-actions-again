@@ -8,18 +8,18 @@ jobs:
   runs-on: ubuntu-latest
   steps:
     - name: Checkout the Code
-     run: echo "Code is Pulled"
+      run: echo "Code is Pulled"
 
  test:
   runs-on: ubuntu-latest
   steps:
     - name: Test the Code
-     run: echo "Code is Tested"
+      run: echo "Code is Tested"
 
  deploy:
   runs-on: ubuntu-latest
   steps:
     - name: Deploy the Code
-     run: echo "Code is Deployed"
+      run: echo "Code is Deployed"
 
   
