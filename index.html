@@ -1,2 +1,970 @@
-<h1>Hello World</h1>
-<h2>Checking the path thing</h2>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Vipul Tapare, Full Stack Developer specializing in React, Angular, Node.js, NestJS and Databricks." />
+  <title>Vipul Tapare | Full Stack Developer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --surface: #121620;
+      --surface-light: #191f2b;
+      --text: #f4f5f7;
+      --muted: #a0a8b8;
+      --accent: #a78bfa;
+      --accent-2: #65e6c2;
+      --border: rgba(255,255,255,.09);
+      --font: "DM Sans", sans-serif;
+      --heading: "Space Grotesk", sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    /* NAVBAR */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11,13,18,.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: var(--heading);
+      font-size: 25px;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      transition: .3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    /* COMMON */
+    section {
+      padding: 100px 0;
+      scroll-margin-top: 75px;
+    }
+
+    .section-label {
+      color: var(--accent-2);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: var(--heading);
+      font-size: clamp(30px, 5vw, 44px);
+      margin-bottom: 18px;
+      letter-spacing: -1.5px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      max-width: 650px;
+      margin-bottom: 42px;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 680px;
+      display: flex;
+      align-items: center;
+      padding: 110px 0;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(167,139,250,.13), transparent 30%),
+        radial-gradient(circle at 15% 80%, rgba(101,230,194,.08), transparent 28%);
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 30px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-2);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--accent-2);
+    }
+
+    .hero h1 {
+      font-family: var(--heading);
+      font-size: clamp(42px, 8vw, 76px);
+      line-height: 1.08;
+      letter-spacing: -3px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero-description {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 13px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: .3s;
+      border: 1px solid var(--border);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #15111e;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(167,139,250,.2);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .hero-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 50px;
+    }
+
+    .tech-pill {
+      padding: 7px 13px;
+      border-radius: 6px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 55px;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+    }
+
+    .info-card h3 {
+      font-family: var(--heading);
+      margin-bottom: 20px;
+    }
+
+    .info-item {
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      font-size: 14px;
+    }
+
+    .info-item:last-child {
+      border: none;
+    }
+
+    .info-item span:first-child {
+      color: var(--muted);
+    }
+
+    .info-item span:last-child {
+      text-align: right;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 25px;
+      transition: .3s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+    }
+
+    .skill-card .skill-icon {
+      font-size: 27px;
+      margin-bottom: 14px;
+    }
+
+    .skill-card h3 {
+      font-family: var(--heading);
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-list span {
+      padding: 6px 10px;
+      background: var(--surface-light);
+      border-radius: 5px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* EXPERIENCE */
+    .timeline {
+      border-left: 1px solid rgba(167,139,250,.4);
+      margin-left: 8px;
+      padding-left: 30px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 35px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -36px;
+      top: 7px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(167,139,250,.7);
+    }
+
+    .timeline-item h3 {
+      font-family: var(--heading);
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .timeline-meta {
+      color: var(--accent-2);
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+      max-width: 750px;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      transition: .3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+    }
+
+    .project-number {
+      color: var(--accent-2);
+      font-family: var(--heading);
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .project-card h3 {
+      font-family: var(--heading);
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .project-card p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .project-tags span {
+      color: var(--accent);
+      background: rgba(167,139,250,.09);
+      padding: 6px 10px;
+      border-radius: 5px;
+      font-size: 11px;
+    }
+
+    /* CONTACT */
+    .contact-box {
+      background: linear-gradient(135deg, #19172a, #121b25);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 55px 35px;
+      text-align: center;
+    }
+
+    .contact-box h2 {
+      font-family: var(--heading);
+      font-size: clamp(30px, 5vw, 44px);
+      margin-bottom: 15px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin: 0 auto 28px;
+      max-width: 550px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      color: var(--muted);
+      font-size: 14px;
+      transition: .3s;
+    }
+
+    .social-links a:hover {
+      color: var(--accent-2);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 25px 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    /* REVEAL ANIMATION */
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        background: var(--surface);
+        padding: 25px 5%;
+        flex-direction: column;
+        gap: 20px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 75px 0;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero-description {
+        font-size: 16px;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .info-item {
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .info-item span:last-child {
+        text-align: left;
+      }
+
+      .contact-box {
+        padding: 40px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#home" class="logo">Vipul<span>.</span></a>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">
+          ☰
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <div class="availability">
+          <span class="status-dot"></span>
+          Full Stack Developer
+        </div>
+
+        <h1>
+          Hi, I'm Vipul.<br>
+          I build <span>digital experiences.</span>
+        </h1>
+
+        <p class="hero-description">
+          I'm a Full Stack Developer passionate about building scalable web
+          applications, developing reliable backend systems, and creating
+          clean, user-friendly interfaces.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">Explore My Work ↗</a>
+          <a href="#contact" class="btn btn-outline">Let's Connect</a>
+        </div>
+
+        <div class="hero-tech">
+          <span class="tech-pill">React.js</span>
+          <span class="tech-pill">Angular</span>
+          <span class="tech-pill">Node.js</span>
+          <span class="tech-pill">NestJS</span>
+          <span class="tech-pill">TypeScript</span>
+          <span class="tech-pill">Databricks</span>
+          <span class="tech-pill">Docker</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-label">01 / About Me</div>
+      <h2 class="section-title">A little about me</h2>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I'm Vipul Tapare, a Full Stack Developer with a background in
+            building web applications using modern frontend and backend
+            technologies.
+          </p>
+
+          <p>
+            I enjoy working across the entire development lifecycle — from
+            designing responsive interfaces and developing REST APIs to
+            database management, authentication, and application deployment.
+          </p>
+
+          <p>
+            I'm also exploring cloud technologies, data platforms, and
+            DevOps practices to build applications that are scalable,
+            maintainable, and reliable.
+          </p>
+
+          <p>
+            My goal is to continuously improve my engineering skills and
+            solve real-world problems through technology.
+          </p>
+        </div>
+
+        <div class="info-card">
+          <h3>Personal Details</h3>
+
+          <div class="info-item">
+            <span>Name</span>
+            <span>Vipul Tapare</span>
+          </div>
+
+          <div class="info-item">
+            <span>Role</span>
+            <span>Full Stack Developer</span>
+          </div>
+
+          <div class="info-item">
+            <span>Education</span>
+            <span>Master of Computer Applications</span>
+          </div>
+
+          <div class="info-item">
+            <span>University</span>
+            <span>VIT Chennai</span>
+          </div>
+
+          <div class="info-item">
+            <span>Location</span>
+            <span>India</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-label">02 / Technical Skills</div>
+      <h2 class="section-title">Technologies I work with</h2>
+      <p class="section-description">
+        Tools and technologies I use to develop, manage, and deploy
+        modern applications.
+      </p>
+
+      <div class="skills-grid">
+
+        <div class="skill-card reveal">
+          <div class="skill-icon">🎨</div>
+          <h3>Frontend Development</h3>
+          <div class="skill-list">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>TypeScript</span>
+            <span>React.js</span>
+            <span>Angular</span>
+            <span>Redux</span>
+            <span>Tailwind CSS</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon">⚙️</div>
+          <h3>Backend Development</h3>
+          <div class="skill-list">
+            <span>Node.js</span>
+            <span>Express.js</span>
+            <span>NestJS</span>
+            <span>PHP</span>
+            <span>Laravel</span>
+            <span>REST APIs</span>
+            <span>GraphQL</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon">🗄️</div>
+          <h3>Database</h3>
+          <div class="skill-list">
+            <span>PostgreSQL</span>
+            <span>MySQL</span>
+            <span>MongoDB</span>
+            <span>SQLite</span>
+            <span>TypeORM</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon">☁️</div>
+          <h3>Cloud & Data Platforms</h3>
+          <div class="skill-list">
+            <span>Databricks</span>
+            <span>Lakehouse</span>
+            <span>Unity Catalog</span>
+            <span>Azure Entra ID</span>
+            <span>OAuth</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon">🚀</div>
+          <h3>DevOps & Deployment</h3>
+          <div class="skill-list">
+            <span>Docker</span>
+            <span>Docker Compose</span>
+            <span>Git</span>
+            <span>GitHub Actions</span>
+            <span>Bitbucket Pipelines</span>
+            <span>CI/CD</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon">🛠️</div>
+          <h3>Tools & Others</h3>
+          <div class="skill-list">
+            <span>VS Code</span>
+            <span>Postman</span>
+            <span>Firebase</span>
+            <span>NX Monorepo</span>
+            <span>Microservices</span>
+            <span>WebSockets</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-label">03 / Experience</div>
+      <h2 class="section-title">My professional journey</h2>
+      <p class="section-description">
+        My experience building and improving software applications.
+      </p>
+
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <h3>Full Stack Developer</h3>
+          <div class="timeline-meta">Professional Experience</div>
+          <p>
+            Working on full stack web application development, frontend
+            interfaces, backend APIs, database integrations, authentication,
+            cloud platform integrations, and application deployment.
+          </p>
+        </div>
+
+        <div class="timeline-item reveal">
+          <h3>Master of Computer Applications</h3>
+          <div class="timeline-meta">VIT Chennai · 2022 – 2024</div>
+          <p>
+            Completed postgraduate studies focused on computer applications,
+            software development, and computer science concepts.
+          </p>
+        </div>
+
+        <div class="timeline-item reveal">
+          <h3>Bachelor of Computer Science and Electronics</h3>
+          <div class="timeline-meta">RTM Nagpur University · 2019 – 2022</div>
+          <p>
+            Built a foundation in programming, computer science,
+            electronics, and software development.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-label">04 / Projects</div>
+      <h2 class="section-title">Some things I've worked on</h2>
+      <p class="section-description">
+        A selection of application development and data platform work.
+      </p>
+
+      <div class="projects-grid">
+
+        <article class="project-card reveal">
+          <div class="project-number">PROJECT 01</div>
+          <h3>Brand Visibility Dashboard</h3>
+          <p>
+            A dashboard for analyzing brand visibility across retailers,
+            markets, and product categories. Includes KPI cards, dynamic
+            filters, catalogue screenshots, and detailed placement data.
+          </p>
+          <div class="project-tags">
+            <span>Angular</span>
+            <span>NestJS</span>
+            <span>PostgreSQL</span>
+            <span>TypeORM</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-number">PROJECT 02</div>
+          <h3>Shree Cement Data Lakehouse</h3>
+          <p>
+            Worked on a Progressive Web Application integrated with
+            Databricks, including Single Sign-On, sensor drill-down
+            functionality, interactive charts, and deployment configuration.
+          </p>
+          <div class="project-tags">
+            <span>React</span>
+            <span>Databricks</span>
+            <span>NestJS</span>
+            <span>OAuth</span>
+            <span>Azure Entra ID</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-number">PROJECT 03</div>
+          <h3>Microservices Architecture</h3>
+          <p>
+            Worked with a modular backend architecture using separate
+            services for API gateway, users, clients, and projects,
+            with inter-service communication and database integration.
+          </p>
+          <div class="project-tags">
+            <span>NestJS</span>
+            <span>Microservices</span>
+            <span>Docker</span>
+            <span>NX</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-number">PROJECT 04</div>
+          <h3>Retail Product Data Collection</h3>
+          <p>
+            Developed browser automation and web data collection workflows
+            to extract product information such as model, brand, price,
+            stock availability, and product URLs.
+          </p>
+          <div class="project-tags">
+            <span>Node.js</span>
+            <span>Playwright</span>
+            <span>JavaScript</span>
+            <span>CSV</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-box reveal">
+        <div class="section-label">05 / Contact</div>
+        <h2>Let's build something great.</h2>
+        <p>
+          Have an interesting project, an opportunity, or just want to
+          connect? Feel free to reach out.
+        </p>
+
+        <!-- Replace this with your actual email address -->
+        <a href="mailto:your-email@example.com" class="btn btn-primary">
+          Send Me an Email ↗
+        </a>
+
+        <div class="social-links">
+          <!-- Replace # with your actual profile URLs -->
+          <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a href="#" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href="#" target="_blank" rel="noopener noreferrer">Portfolio ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Vipul Tapare. Built with HTML, CSS & JavaScript.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navigation
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("active");
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
+      menuBtn.textContent = isOpen ? "✕" : "☰";
+    });
+
+    // Close mobile menu after clicking a navigation link
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.textContent = "☰";
+      });
+    });
+
+    // Automatically update footer year
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // Reveal elements when they enter the viewport
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12
+    });
+
+    document.querySelectorAll(".reveal").forEach(element => {
+      observer.observe(element);
+    });
+  </script>
+
+</body>
+</html>
